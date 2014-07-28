@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">MindChiTimer</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="timerVal">0</string>
+	<string name="pauseButtonLabel">Pause</string>
+	<string name="startButtonLabel">Start</string>
+	<string name="stepVal">1</string>
+</resources>
