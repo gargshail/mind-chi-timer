@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
-
+	
 	private TextView timerValue;
 	
 	private TextView stepValue;
@@ -20,7 +20,12 @@ public class MainActivity extends Activity {
 	
 	Timer myTimer ;
 	
+	static final String STATE_SECS = "SECS";
+	
+	static final String STATE_STEP = "STEPS";
+	
 	int secs = 60;
+	
 	int step = 1;
 	
 	String stepDesc[] =  {"", "Breathe", "Chi-One", "Past -ve", "Past +ve", "Check-BEAT", "Choose-BEAT", "24HR-Preview", "Gratitude", "Done" };
@@ -30,7 +35,11 @@ public class MainActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		
+		if(savedInstanceState != null) {
+			secs = savedInstanceState.getInt(STATE_SECS);
+			
+			step = savedInstanceState.getInt(STATE_STEP);
+		}
 		setContentView(R.layout.activity_main);
 		
 		timerValue = (TextView) findViewById(R.id.timerValue);
@@ -75,5 +84,14 @@ public class MainActivity extends Activity {
 	protected void onDestroy() {
 		super.onDestroy();
 		myTimer.cancel();
+	}
+
+	@Override
+	protected void onSaveInstanceState(Bundle outState) {
+	
+		outState.putInt(STATE_SECS, secs);
+		outState.putInt(STATE_STEP, step);
+		
+		super.onSaveInstanceState(outState);
 	}
 }
